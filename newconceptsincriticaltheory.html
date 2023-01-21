@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        font-family: "Arial", sans-serif;
+        font-size: 100vh;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="neon-text"></h1>
+
+    <script>
+      // Array of words to display
+      const words = ["NEW", "CONCEPTS", "IN", "CRITICAL", "THEORY"];
+
+      // Array of neon colors
+      const colors = ["#ff00ff", "#00ffff", "#ffff00", "#00ff00"];
+
+      // Array of opposite neon colors
+      const oppositeColors = ["#00ff00", "#ffff00", "#00ffff", "#ff00ff"];
+
+      // Index of current word and color
+      let wordIndex = 0;
+      let colorIndex = 0;
+
+      // Function to update the text and color
+      function updateText() {
+        const textElement = document.getElementById("neon-text");
+        textElement.innerHTML = words[wordIndex];
+        textElement.style.color = colors[colorIndex];
+        document.body.style.backgroundColor = oppositeColors[colorIndex];
+
+        // Increment the indices
+        wordIndex = (wordIndex + 1) % words.length;
+        colorIndex = (colorIndex + 1) % colors.length;
+      }
+
+      // Set the initial text and color
+      updateText();
+
+      // Update the text and color every 2 seconds
+      setInterval(updateText, 400);
+    </script>
+  </body>
+</html>
